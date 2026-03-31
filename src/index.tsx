@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { Provider, useDispatch, useSelector } from 'react-redux'; 
 import { store, RootState } from './app/store'; // store - это store Redux, RootState - это тип состояния Redux
 
+import { useWebSocket } from './hooks/useWebSocket';
 import EventList from './components/EventList';
 import Statistics from './components/Statistics';
 import { clearEvents } from './features/events/eventsSlice';
@@ -12,6 +13,8 @@ const App =() => {
     const {items, totalCount, connectionStatus} = useSelector( // useSelector - это хук для получения состояния Redux
         (state: RootState) => state.events 
     );
+
+    useWebSocket(); // useWebSocket - это кастомный хук с автоматическим подключением к WebSocket 
 
     const handleClear = () => {
         dispatch(clearEvents()); // clearEvents - это функция для очистки событий
