@@ -39,3 +39,5 @@ const Statictics: React.FC<StatisticsProps> = ({events, totalCount}) => {
       </div>
     );
 };
+
+export default Statictics;
